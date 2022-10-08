@@ -67,24 +67,37 @@ def sentiment(sentence):
 
 import pandas as pd
 
-df = pd.read_csv('Dataset_copy.csv')
+# df = pd.read_csv('Dataset.csv')
 
-print(df)
+# print(df)
 
-# import csv
+import csv
 # sentences = []
 # # encoding="utf16"
-# with open('Dataset.csv', mode='r') as data:
-#     # reader = csv.reader(data, delimiter=',')
+# with open('Dataset copy.csv', mode='r') as data:
+# with open("Dataset copy.csv", 'r') as data:
+
+def analyze(sentence):
+    sid = SentimentIntensityAnalyzer()
+    ss = sid.polarity_scores(sentence)
+    return ss
+    for k in sorted(ss):
+        print('{0}: {1}, '.format(k, ss[k]), end='')
+
+data = pd.read_csv("Dataset copy.csv")
+data['score'] = data['text'].apply(analyze)
+data.save_csv("nltk_data")
+
+    # reader = csv.reader(data, delimiter=',')
 #     # reader = csv.reader(data, encoding)
-#     reader = csv.reader(data, errors="ignore")
+    # reader = csv.reader(data, errors="ignore")
 #     i = 0
 #     for row in reader:
 #         if i == 50:
 #             break
 #         print(row)
 #         i = i + 1
-
+    # print(reader[0])
 
     # i = 0
     # for row in reader:
@@ -92,16 +105,16 @@ print(df)
     #         continue
     #     if i >= 7:
     #         break
-    #     sentence = row[2]
+    #     sentence = row[1]
     #     print(sentence)
-        # sid = SentimentIntensityAnalyzer()
-        # print(sentence)
-        # ss = sid.polarity_scores(sentence)
-        # for k in sorted(ss):
-        #     print('{0}: {1}, '.format(k, ss[k]), end='')
-        # print()
+    #     sid = SentimentIntensityAnalyzer()
+    #     print(sentence)
+    #     ss = sid.polarity_scores(sentence)
+    #     for k in sorted(ss):
+    #         print('{0}: {1}, '.format(k, ss[k]), end='')
+    #     print()
 
-        # i = i+1
+    #     i = i+1
         
 
 
