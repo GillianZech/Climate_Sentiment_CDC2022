@@ -56,13 +56,18 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 
-
+def sentiment(sentence):
+    sid = SentimentIntensityAnalyzer()
+    ss = sid.polarity_scores(sentence)
+    for k in sorted(ss):
+        print('{0}: {1}, '.format(k, ss[k]), end='')
+    return ss
 
 
 
 import pandas as pd
 
-df = pd.read_csv('Dataset.csv')
+df = pd.read_csv('Dataset_copy.csv')
 
 print(df)
 
