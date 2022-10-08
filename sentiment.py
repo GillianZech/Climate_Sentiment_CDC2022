@@ -51,8 +51,7 @@ def analyze(sentence):
     sid = SentimentIntensityAnalyzer()
     ss = sid.polarity_scores(sentence)
     return ss
-    for k in sorted(ss):
-        print('{0}: {1}, '.format(k, ss[k]), end='')
+
 
 data = pd.read_csv("Dataset copy.csv")
 data['score'] = data['text'].apply(analyze)
