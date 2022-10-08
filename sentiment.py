@@ -43,15 +43,6 @@ classifier = sentim_analyzer.train(trainer, training_set)
 #Training classifier
 for key,value in sorted(sentim_analyzer.evaluate(test_set).items()):
     print('{0}: {1}'.format(key, value))
-#Evaluating NaiveBayesClassifier results...
-# Accuracy: 0.8
-# F-measure [obj]: 0.8
-# F-measure [subj]: 0.8
-# Precision [obj]: 0.8
-# Precision [subj]: 0.8
-# Recall [obj]: 0.8
-# Recall [subj]: 0.8
-# Vader
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pandas as pd
 import csv
