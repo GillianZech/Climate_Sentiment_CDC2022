@@ -65,4 +65,4 @@ def analyze(sentence):
 
 data = pd.read_csv("Dataset copy.csv")
 data['score'] = data['text'].apply(analyze)
-data.save_csv("nltk_data")
+data.to_csv("nltk_data")
