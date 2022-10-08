@@ -2,3 +2,6 @@ secrets.py
 __pycache__
 node_modules
 *.txt.00
+*.txt.01
+*.txt.02
+*.txt.03
