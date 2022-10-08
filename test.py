@@ -12,20 +12,18 @@ def grouper(iterable, n, fillvalue=None):
     args = [iter(iterable)] * n
     return zip_longest(*args, fillvalue=fillvalue)
 
-data = pd.DataFrame(columns=["id", "text", 'favorite_count', 'retweet_count', 'created_at', 'coordinates'])
+# data = pd.DataFrame(columns=["id", "text", 'favorite_count', 'retweet_count', 'created_at', 'coordinates'])
+data = pd.read_csv("Dataset.csv")
 
-counter = 0
 # Read IDs from .txt file and get tweets
-with open("climate_id.txt.00", 'r') as f:
-    for lines in grouper(f, 100, ''):
-        counter += 1
+with open("climate_id.txt.03", 'r') as f:
+    for lines in grouper(f, 25000, ''):
         ids = [x[:-1] for x in lines]
+        ids = ids[::250]
         tweets = api.lookup_statuses(ids)
         for tweet in tweets:
             data = data.append({"id": tweet.id, 'text': tweet.text, 'favorite_count': tweet.favorite_count, 'retweet_count': tweet.retweet_count, 'created_at': tweet.created_at, 'coordinates': tweet.coordinates}, ignore_index=True)
-        print(data)
+        print(len(data))
 
-        if counter == 1000:
-            break
 
 data.to_csv("Dataset.csv")
