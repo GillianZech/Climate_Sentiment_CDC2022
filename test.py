@@ -16,7 +16,7 @@ def grouper(iterable, n, fillvalue=None):
 data = pd.read_csv("Dataset.csv")
 
 # Read IDs from .txt file and get tweets
-with open("climate_id.txt.01", 'r') as f:
+with open("climate_id.txt.03", 'r') as f:
     for lines in grouper(f, 25000, ''):
         ids = [x[:-1] for x in lines]
         ids = ids[::250]
