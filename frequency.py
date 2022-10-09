@@ -29,9 +29,9 @@ def find_frequency(list):
     # for word in list:
     #     condition = word.isalnum()
     #     f_dist[condition][word] += 1
-    print(f_dist)
+    # print(f_dist)
     # to_return = f_dist.r_Nr()
-    f_dist.plot()
+    # f_dist.plot()
     return f_dist #to_return
 full_list = []
 def make_list_function(tweet):
@@ -42,10 +42,8 @@ def make_list_function(tweet):
 data = pd.read_csv("nltk_split.csv")
 data2 = pd.DataFrame(columns=["word", "frequency"])
 data['text'].apply(make_list_function)
-# print(find_frequency(full_list))
+print("Making frequency string")
 frequency_string = find_frequency(full_list).pformat(len(full_list))
-# data2['frequency'] = find_frequency(full_list)
-# data.to_csv("frequencies")
 frequency_dict = ast.literal_eval(frequency_string[9:-1])
 frequency_series = pd.Series(frequency_dict)
 frequency_series = frequency_series[frequency_series.index.str.isalnum()]
