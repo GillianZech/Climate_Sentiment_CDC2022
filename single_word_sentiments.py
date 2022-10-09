@@ -68,9 +68,9 @@ data['category'] = data['sentiment'].apply(classify)
 positive = data[data['category'] == 'positive']
 negative = data[data['category'] == 'negative']
 neutral = data[data['category'] == 'neutral']
-# positive.to_csv("positive.csv")
-# negative.to_csv("negative.csv")
-# neutral.to_csv("neutral.csv")
+positive.to_csv("positive.csv")
+negative.to_csv("negative.csv")
+neutral.to_csv("neutral.csv")
 
 sum_data = pd.read_excel("Sum.xlsx")
 sum_data["sentiment"] = data['category']

@@ -5,3 +5,6 @@ node_modules
 *.txt.01
 *.txt.02
 *.txt.03
+
+package-lock.json
+package.json
